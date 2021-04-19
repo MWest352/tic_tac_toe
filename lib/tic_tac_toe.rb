@@ -1,16 +1,9 @@
- # frozen_string_literal: false
+# frozen_string_literal: true
 
 ### Tic Tac Toe, played in command line###
 
-# Player Class
-class Player
-  attr_accessor :name, :symb
+require_relative 'tic_tac_toe_player.rb'
 
-  def initialize(name, symb)
-    @name = name
-    @symb = symb
-  end
-end
 
 # The Game
 class Game < Player
@@ -162,6 +155,3 @@ class Game < Player
     puts "All right, we'll call it a draw."
   end
 end
-
-game = Game.new
-game.logic
