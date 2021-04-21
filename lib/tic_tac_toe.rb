@@ -2,37 +2,17 @@
 
 ### Tic Tac Toe, played in command line###
 
-require_relative 'tic_tac_toe_player.rb'
-
+require_relative './tic_tac_toe_player.rb'
 
 # The Game
-class Game < Player
+class Game
   attr_accessor :board
-  def initialize
+  def initialize(player_one, player_two)
     @board = initial_board
-    @player_one = make_player_one
-    @player_two = make_player_two
+    @player_one = player_one
+    @player_two = player_two
     @current_player = @player_one
-  end
-
-  def make_player_one
-    puts
-    puts "P1 enter name"
-    player_name = gets.chomp
-    player = Player.new(player_name, 'X')
-    puts "Welcome #{player.name}, you'll be #{player.symb}"
     @choices = []
-    player
-  end
-
-  def make_player_two
-    puts
-    puts "P2 enter name"
-    player_name = gets.chomp
-    player = Player.new(player_name, 'O')
-    puts "Welcome #{player.name}, you'll be #{player.symb}"
-    @choices = []
-    player
   end
 
   def initial_board
@@ -142,7 +122,7 @@ class Game < Player
     puts "Would you like to play again? Y/N"
     answer =  gets.chomp.downcase
     if answer == "y"
-      game = Game.new
+      game = Game.new(player_one, player_two)
       game.logic
     else
       exit
